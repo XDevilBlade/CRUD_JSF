@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditApartmentsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditApartmentsLabel_aptId}" for="aptId" />
+                    <h:inputText id="aptId" value="#{apartmentsSession.current.aptId}" title="#{bundle.EditApartmentsTitle_aptId}" disabled="true" required="true" requiredMessage="#{bundle.EditApartmentsRequiredMessage_aptId}"/>
+                    
+                    <h:outputLabel value="#{bundle.EditApartmentsLabel_aptNumber}" for="aptNumber" />
+                    <h:inputText id="aptNumber" value="#{apartmentsSession.current.aptNumber}" title="#{bundle.EditApartmentsTitle_aptNumber}" required="true" requiredMessage="#{bundle.EditApartmentsRequiredMessage_aptNumber}"/>
+                    
+                    <h:outputLabel value="#{bundle.EditApartmentsLabel_bathroomCount}" for="bathroomCount" />
+                    <h:inputText id="bathroomCount" value="#{apartmentsSession.current.bathroomCount}" title="#{bundle.EditApartmentsTitle_bathroomCount}" required="true" requiredMessage="#{bundle.EditApartmentsRequiredMessage_bathroomCount}"/>
+                    
+                    <h:outputLabel value="#{bundle.EditApartmentsLabel_bedroomCount}" for="bedroomCount" />
+                    <h:inputText id="bedroomCount" value="#{apartmentsSession.current.bedroomCount}" title="#{bundle.EditApartmentsTitle_bedroomCount}" required="true" requiredMessage="#{bundle.EditApartmentsRequiredMessage_bedroomCount}"/>
+                    
+                    <h:outputLabel value="#{bundle.EditApartmentsLabel_roomCount}" for="roomCount" />
+                    <h:inputText id="roomCount" value="#{apartmentsSession.current.roomCount}" title="#{bundle.EditApartmentsTitle_roomCount}" required="true" requiredMessage="#{bundle.EditApartmentsRequiredMessage_roomCount}"/>
+                    
+                    <h:outputLabel value="#{bundle.EditApartmentsLabel_otherApartmentDetails}" for="otherApartmentDetails" />
+                    <h:inputText id="otherApartmentDetails" value="#{apartmentsSession.current.otherApartmentDetails}" title="#{bundle.EditApartmentsTitle_otherApartmentDetails}" />
+                    
+                    <h:outputLabel value="#{bundle.EditApartmentsLabel_buildingId}" for="buildingId" />
+                    <h:selectOneMenu id="buildingId" value="#{apartmentsSession.current.buildingId}" converter="apartmentBuildingsConverter" title="#{bundle.EditApartmentsTitle_buildingId}" required="true" requiredMessage="#{bundle.EditApartmentsRequiredMessage_buildingId}">
+                        <f:selectItems value="#{apartmentBuildingsManagement.allApartmentBuildings}"/>
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.EditApartmentsLabel_aptTypeCode}" for="aptTypeCode" />
+                    <h:selectOneMenu id="aptTypeCode" value="#{apartmentsSession.current.aptTypeCode}" converter="refApartmentTypesConverter" title="#{bundle.EditApartmentsTitle_aptTypeCode}" required="true" requiredMessage="#{bundle.EditApartmentsRequiredMessage_aptTypeCode}">
+                        <f:selectItems value="#{refApartmentTypesManagement.allRefApartmentTypes}"/>
+                    </h:selectOneMenu>
+                
+                </h:panelGrid>
+                <h:commandButton action="#{apartmentsManagement.update(apartmentsSession.current)}" value="#{bundle.EditApartmentsValiderLink}"/>
+                <br />
+                <h4><h:link outcome="/apartments/List" value="#{bundle.EditApartmentsShowAllLink}"/></h4>
+                <br />
+                <h4><h:link outcome="/index" value="#{bundle.EditApartmentsIndexLink}" /></h4>
+            </h:form>
+            <br/>
+            <h3><h:outputText value = "#{bundle.ApartmentsEmptySelectOneMenuBuildingId}"/></h3>
+            <h3><h:outputText value = "#{bundle.ApartmentsEmptySelectOneMenuAptTypeCode}"/></h3>
+            <h3><h:outputText value = "#{bundle.ApartmentsChampsObligatoires}"/></h3>
+        </ui:define>
+    </ui:composition>
+
+</html>

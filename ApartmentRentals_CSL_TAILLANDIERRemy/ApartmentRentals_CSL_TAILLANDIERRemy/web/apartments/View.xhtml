@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewApartmentsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewApartmentsLabel_aptId}"/>
+                    <h:outputText value="#{apartmentsSession.current.aptId}" title="#{bundle.ViewApartmentsTitle_aptId}"/>
+                    <h:outputText value="#{bundle.ViewApartmentsLabel_aptNumber}"/>
+                    <h:outputText value="#{apartmentsSession.current.aptNumber}" title="#{bundle.ViewApartmentsTitle_aptNumber}"/>
+                    <h:outputText value="#{bundle.ViewApartmentsLabel_bathroomCount}"/>
+                    <h:outputText value="#{apartmentsSession.current.bathroomCount}" title="#{bundle.ViewApartmentsTitle_bathroomCount}"/>
+                    <h:outputText value="#{bundle.ViewApartmentsLabel_bedroomCount}"/>
+                    <h:outputText value="#{apartmentsSession.current.bedroomCount}" title="#{bundle.ViewApartmentsTitle_bedroomCount}"/>
+                    <h:outputText value="#{bundle.ViewApartmentsLabel_roomCount}"/>
+                    <h:outputText value="#{apartmentsSession.current.roomCount}" title="#{bundle.ViewApartmentsTitle_roomCount}"/>
+                    <h:outputText value="#{bundle.ViewApartmentsLabel_otherApartmentDetails}"/>
+                    <h:outputText value="#{apartmentsSession.current.otherApartmentDetails}" title="#{bundle.ViewApartmentsTitle_otherApartmentDetails}"/>
+                    <h:outputText value="#{bundle.ViewApartmentsLabel_buildingId}"/>
+                    <h:outputText value="#{apartmentsSession.current.buildingId}" title="#{bundle.ViewApartmentsTitle_buildingId}"/>
+                    <h:outputText value="#{bundle.ViewApartmentsLabel_aptTypeCode}"/>
+                    <h:outputText value="#{apartmentsSession.current.aptTypeCode}" title="#{bundle.ViewApartmentsTitle_aptTypeCode}"/>
+                </h:panelGrid>
+                <br />
+                <h4><h:commandLink action="#{apartmentsManagement.remove(apartmentsSession.current)}" value="#{bundle.ViewApartmentsDeleteLink}"/></h4>
+                <h4><h:commandLink action="#{apartmentsSession.edit(apartmentsSession.current)}" value="#{bundle.ViewApartmentsEditLink}"/></h4>
+                <h4><h:link outcome="/apartments/Create" value="#{bundle.ViewApartmentsCreateLink}" /></h4>
+                <br />
+                <h4><h:link outcome="/apartments/List" value="#{bundle.ViewApartmentsShowAllLink}"/></h4>
+                <br />
+                <h4><h:link outcome="/index" value="#{bundle.ViewApartmentsIndexLink}"/></h4>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

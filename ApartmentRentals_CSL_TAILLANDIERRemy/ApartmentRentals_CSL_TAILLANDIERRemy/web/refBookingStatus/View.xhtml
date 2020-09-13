@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRefBookingStatusTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRefBookingStatusLabel_bookingStatusCode}"/>
+                    <h:outputText value="#{refBookingStatusSession.current.bookingStatusCode}" title="#{bundle.ViewRefBookingStatusTitle_bookingStatusCode}"/>
+                    <h:outputText value="#{bundle.ViewRefBookingStatusLabel_bookingStatusDescription}"/>
+                    <h:outputText value="#{refBookingStatusSession.current.bookingStatusDescription}" title="#{bundle.ViewRefBookingStatusTitle_bookingStatusDescription}"/>
+                </h:panelGrid>
+                <br />
+                <h4><h:commandLink action="#{refBookingStatusManagement.remove(refBookingStatusSession.current)}" value="#{bundle.ViewRefBookingStatusDeleteLink}"/></h4>
+                <h4><h:commandLink action="#{refBookingStatusSession.edit(refBookingStatusSession.current)}" value="#{bundle.ViewRefBookingStatusEditLink}"/></h4>
+                <h4><h:link outcome="/refBookingStatus/Create" value="#{bundle.ViewRefBookingStatusCreateLink}" /></h4>
+                <br />
+                <h4><h:link outcome="/refBookingStatus/List" value="#{bundle.ViewRefBookingStatusShowAllLink}"/></h4>
+                <br />
+                <h4><h:link outcome="/index" value="#{bundle.ViewRefBookingStatusIndexLink}"/></h4>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

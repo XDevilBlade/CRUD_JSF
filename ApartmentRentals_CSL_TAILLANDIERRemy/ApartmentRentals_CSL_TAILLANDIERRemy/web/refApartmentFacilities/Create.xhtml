@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRefApartmentFacilitiesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateRefApartmentFacilitiesLabel_facilityCode}" for="facilityCode" />
+                    <h:inputText id="facilityCode" value="#{refApartmentFacilitiesManagement.refApartmentFacilities.facilityCode}" title="#{bundle.CreateRefApartmentFacilitiesTitle_facilityCode}" required="true" requiredMessage="#{bundle.CreateRefApartmentFacilitiesRequiredMessage_facilityCode}"/>
+                    
+                    <h:outputLabel value="#{bundle.CreateRefApartmentFacilitiesLabel_facilityDescription}" for="facilityDescription" />
+                    <h:inputText id="facilityDescription" value="#{refApartmentFacilitiesManagement.refApartmentFacilities.facilityDescription}" title="#{bundle.CreateRefApartmentFacilitiesTitle_facilityDescription}" />
+                </h:panelGrid>
+                <br />
+                <h:commandButton action="#{refApartmentFacilitiesManagement.create()}" value="#{bundle.CreateRefApartmentFacilitiesValiderLink}" />
+                <br />
+                <h4><h:link outcome="/refApartmentFacilities/List" value="#{bundle.CreateRefApartmentFacilitiesShowAllLink}"/></h4>
+                <br />
+                <h4><h:link outcome="/index" value="#{bundle.CreateRefApartmentFacilitiesIndexLink}"/></h4>
+            </h:form>
+            <br/>
+            <h3><h:outputText value = "#{bundle.RefApartmentFacilitiesChampsObligatoires}"/></h3>
+        </ui:define>
+    </ui:composition>
+
+</html>

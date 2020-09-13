@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateApartmentBuildingsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateApartmentBuildingsLabel_buildingId}" for="buildingId" />
+                    <h:inputText id="buildingId" value="#{apartmentBuildingsManagement.apartmentBuildings.buildingId}" title="#{bundle.CreateApartmentBuildingsTitle_buildingId}" required="true" requiredMessage="#{bundle.CreateApartmentBuildingsRequiredMessage_buildingId}"/>
+                    
+                    <h:outputLabel value="#{bundle.CreateApartmentBuildingsLabel_buildingShortName}" for="buildingShortName" />
+                    <h:inputText id="buildingShortName" value="#{apartmentBuildingsManagement.apartmentBuildings.buildingShortName}" title="#{bundle.CreateApartmentBuildingsTitle_buildingShortName}" />
+                    
+                    <h:outputLabel value="#{bundle.CreateApartmentBuildingsLabel_buildingFullName}" for="buildingFullName" />
+                    <h:inputText id="buildingFullName" value="#{apartmentBuildingsManagement.apartmentBuildings.buildingFullName}" title="#{bundle.CreateApartmentBuildingsTitle_buildingFullName}" required="true" requiredMessage="#{bundle.CreateApartmentBuildingsRequiredMessage_buildingFullName}"/>
+                    
+                    <h:outputLabel value="#{bundle.CreateApartmentBuildingsLabel_buildingDescription}" for="buildingDescription" />
+                    <h:inputText id="buildingDescription" value="#{apartmentBuildingsManagement.apartmentBuildings.buildingDescription}" title="#{bundle.CreateApartmentBuildingsTitle_buildingDescription}" />
+                    
+                    <h:outputLabel value="#{bundle.CreateApartmentBuildingsLabel_buildingAddress}" for="buildingAddress" />
+                    <h:inputText id="buildingAddress" value="#{apartmentBuildingsManagement.apartmentBuildings.buildingAddress}" title="#{bundle.CreateApartmentBuildingsTitle_buildingAddress}" required="true" requiredMessage="#{bundle.CreateApartmentBuildingsRequiredMessage_buildingAddress}"/>
+                    
+                    <h:outputLabel value="#{bundle.CreateApartmentBuildingsLabel_buildingManager}" for="buildingManager" />
+                    <h:inputText id="buildingManager" value="#{apartmentBuildingsManagement.apartmentBuildings.buildingManager}" title="#{bundle.CreateApartmentBuildingsTitle_buildingManager}" required="true" requiredMessage="#{bundle.CreateApartmentBuildingsRequiredMessage_buildingManager}"/>
+                    
+                    <h:outputLabel value="#{bundle.CreateApartmentBuildingsLabel_buildingPhone}" for="buildingPhone" />
+                    <h:inputText id="buildingPhone" value="#{apartmentBuildingsManagement.apartmentBuildings.buildingPhone}" title="#{bundle.CreateApartmentBuildingsTitle_buildingPhone}" required="true" requiredMessage="#{bundle.CreateApartmentBuildingsRequiredMessage_buildingPhone}">
+                        <f:validateLength minimum="10"  maximum="10"/>
+                    </h:inputText>
+                    
+                    <h:outputLabel value="#{bundle.CreateApartmentBuildingsLabel_otherBuildingDetails}" for="otherBuildingDetails" />
+                    <h:inputText id="otherBuildingDetails" value="#{apartmentBuildingsManagement.apartmentBuildings.otherBuildingDetails}" title="#{bundle.CreateApartmentBuildingsTitle_otherBuildingDetails}" />
+                
+                </h:panelGrid>
+                <br />
+                <h:commandButton action="#{apartmentBuildingsManagement.create()}" value="#{bundle.CreateApartmentBuildingsValiderLink}" />
+                <br />
+                <h4><h:link outcome="/apartmentBuildings/List" value="#{bundle.CreateApartmentBuildingsShowAllLink}"/></h4>
+                <br />
+                <h4><h:link outcome="/index" value="#{bundle.CreateApartmentBuildingsIndexLink}"/></h4>
+            </h:form>
+            <br/>
+            <h3><h:outputText value = "#{bundle.ApartmentBuildingsChampsObligatoires}"/></h3>
+        </ui:define>
+    </ui:composition>
+
+</html>

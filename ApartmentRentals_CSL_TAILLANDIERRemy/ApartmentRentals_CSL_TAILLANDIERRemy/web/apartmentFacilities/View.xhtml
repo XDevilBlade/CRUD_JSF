@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewApartmentFacilitiesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewApartmentFacilitiesLabel_aptId}"/>
+                    <h:outputText value="#{apartmentFacilitiesSession.currentAptId}" title="#{bundle.ViewApartmentFacilitiesTitle_aptId}"/>
+                    
+                    <h:outputText value="#{bundle.ViewApartmentFacilitiesLabel_facilityCode}"/>
+                    <h:outputText value="#{apartmentFacilitiesSession.currentFacilityCode}" title="#{bundle.ViewApartmentFacilitiesTitle_facilityCode}"/>
+                </h:panelGrid>
+                <br />
+                <h4><h:commandLink action="#{apartmentFacilitiesManagement.remove(apartmentFacilitiesSession.currentAptId, 
+                                             apartmentFacilitiesSession.currentFacilityCode)}" value="#{bundle.ViewApartmentsDeleteLink}"/></h4>
+                <h4><h:commandLink action="#{apartmentFacilitiesSession.edit(apartmentFacilitiesSession.currentAptId, 
+                                                     apartmentFacilitiesSession.currentFacilityCode,
+                                                     apartmentFacilitiesSession.currentAptId,
+                                                     apartmentFacilitiesSession.currentFacilityCode)}" value="#{bundle.ViewApartmentFacilitiesEditLink}"/></h4>
+                <h4><h:link outcome="/apartmentFacilities/Create" value="#{bundle.ViewApartmentFacilitiesCreateLink}" /></h4>
+                <br />
+                <h4><h:link outcome="/apartmentFacilities/List" value="#{bundle.ViewApartmentFacilitiesShowAllLink}"/></h4>
+                <br />
+                <h4><h:link outcome="/index" value="#{bundle.ViewApartmentFacilitiesIndexLink}"/></h4>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

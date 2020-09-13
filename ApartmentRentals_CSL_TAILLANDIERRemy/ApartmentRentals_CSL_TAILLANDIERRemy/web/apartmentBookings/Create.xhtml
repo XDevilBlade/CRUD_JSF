@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateApartmentBookingsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateApartmentBookingsLabel_aptBookingId}" for="aptBookingId" />
+                    <h:inputText id="aptBookingId" value="#{apartmentBookingsManagement.apartmentBookings.aptBookingId}" title="#{bundle.CreateApartmentBookingsTitle_aptBookingId}" required="true" requiredMessage="#{bundle.CreateApartmentBookingsRequiredMessage_aptBookingId}"/>
+                    
+                    <h:outputLabel value="#{bundle.CreateApartmentBookingsLabel_bookingStartDate}" for="bookingStartDate" />
+                    <p:calendar id="bookingStartDate" converter="dateToStringConverter" pattern="dd/MM/yyyy" value="#{apartmentBookingsManagement.apartmentBookings.bookingStartDate}" showOn="button" readonlyInput="true" title="#{bundle.CreateApartmentBookingsTitle_bookingStartDate}" required="true" requiredMessage="#{bundle.CreateApartmentBookingsRequiredMessage_bookingStartDate}"/>
+                    
+                    <h:outputLabel value="#{bundle.CreateApartmentBookingsLabel_bookingEndDate}" for="bookingEndDate" />
+                    <p:calendar id="bookingEndDate" pattern="dd/MM/yyyy" converter="dateToStringConverter" value="#{apartmentBookingsManagement.apartmentBookings.bookingEndDate}" showOn="button" readonlyInput="true" title="#{bundle.CreateApartmentBookingsTitle_bookingEndDate}" required="true" requiredMessage="#{bundle.CreateApartmentBookingsRequiredMessage_bookingEndDate}"/>
+                    
+                    <h:outputLabel value="#{bundle.CreateApartmentBookingsLabel_otherBookingDetails}" for="otherBookingDetails" />
+                    <h:inputText id="otherBookingDetails" value="#{apartmentBookingsManagement.apartmentBookings.otherBookingDetails}" title="#{bundle.CreateApartmentBookingsTitle_otherBookingDetails}" />
+                   
+                    <h:outputLabel value="#{bundle.CreateApartmentBookingsLabel_aptId}" for="aptId" />
+                    <h:selectOneMenu id="aptId" value="#{apartmentBookingsManagement.apartmentBookings.aptId}" converter="apartmentsConverter" title="#{bundle.CreateApartmentBookingsTitle_aptId}" required="true" requiredMessage="#{bundle.CreateApartmentBookingsRequiredMessage_aptId}">
+                        <f:selectItems value="#{apartmentsManagement.allApartments}"/>
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.CreateApartmentBookingsLabel_guestId}" for="guestId" />
+                    <h:selectOneMenu id="guestId" value="#{apartmentBookingsManagement.apartmentBookings.guestId}"  converter="guestsConverter" title="#{bundle.CreateApartmentBookingsTitle_guestId}" required="true" requiredMessage="#{bundle.CreateApartmentBookingsRequiredMessage_guestId}">
+                        <f:selectItems value="#{guestsManagement.allGuests}"/>
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.CreateApartmentBookingsLabel_bookingStatusCode}" for="bookingStatusCode" />
+                    <h:selectOneMenu id="bookingStatusCode" value="#{apartmentBookingsManagement.apartmentBookings.bookingStatusCode}" converter="refBookingStatusConverter" title="#{bundle.CreateApartmentBookingsTitle_bookingStatusCode}" required="true" requiredMessage="#{bundle.CreateApartmentBookingsRequiredMessage_bookingStatusCode}">
+                        <f:selectItems value="#{refBookingStatusManagement.allRefBookingStatus}"/>
+                    </h:selectOneMenu>
+               
+                </h:panelGrid>
+                <br />
+                <h:commandButton action="#{apartmentBookingsManagement.create()}" value="#{bundle.CreateApartmentBookingsValiderLink}" />
+                <br />
+                <h4><h:link outcome="/apartmentBookings/List" value="#{bundle.CreateApartmentBookingsShowAllLink}"/></h4>
+                <br />
+                <h4><h:link outcome="/index" value="#{bundle.CreateApartmentBookingsIndexLink}"/></h4>
+            </h:form>
+            <br/>
+            <h3><h:outputText value = "#{bundle.ApartmentBookingsEmptySelectOneMenuAptId}"/></h3>
+            <h3><h:outputText value = "#{bundle.ApartmentBookingsEmptySelectOneMenuBookingStatusCode}"/></h3>
+            <h3><h:outputText value = "#{bundle.ApartmentBookingsEmptySelectOneMenuGuestId}"/></h3>
+            <h3><h:outputText value = "#{bundle.ApartmentBookingsChampsObligatoires}"/></h3>
+            <h3><h:outputText value = "#{bundle.ApartmentBookingsRemarqueDate}"/></h3>
+        </ui:define>
+    </ui:composition>
+
+</html>

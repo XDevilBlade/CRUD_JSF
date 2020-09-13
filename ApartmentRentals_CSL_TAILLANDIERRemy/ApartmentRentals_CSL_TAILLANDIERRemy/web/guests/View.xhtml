@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewGuestsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewGuestsLabel_guestId}"/>
+                    <h:outputText value="#{guestsSession.current.guestId}" title="#{bundle.ViewGuestsTitle_guestId}"/>
+                    <h:outputText value="#{bundle.ViewGuestsLabel_genderCode}"/>
+                    <h:outputText value="#{guestsSession.current.genderCode}" title="#{bundle.ViewGuestsTitle_genderCode}"/>
+                    <h:outputText value="#{bundle.ViewGuestsLabel_guestFirstName}"/>
+                    <h:outputText value="#{guestsSession.current.guestFirstName}" title="#{bundle.ViewGuestsTitle_guestFirstName}"/>
+                    <h:outputText value="#{bundle.ViewGuestsLabel_guestLastName}"/>
+                    <h:outputText value="#{guestsSession.current.guestLastName}" title="#{bundle.ViewGuestsTitle_guestLastName}"/>
+                    <h:outputText value="#{bundle.ViewGuestsLabel_dateOfBirth}"/>
+                    <h:outputText value="#{guestsSession.current.dateOfBirth}" title="#{bundle.ViewGuestsTitle_dateOfBirth}"/>
+                    <h:outputText value="#{bundle.ViewGuestsLabel_otherGuestDetails}"/>
+                    <h:outputText value="#{guestsSession.current.otherGuestDetails}" title="#{bundle.ViewGuestsTitle_otherGuestDetails}"/>
+                </h:panelGrid>
+                <br />
+                <h4><h:commandLink action="#{guestsManagement.remove(guestsSession.current)}" value="#{bundle.ViewGuestsDeleteLink}"/></h4>
+                <h4><h:commandLink action="#{guestsSession.edit(guestsSession.current)}" value="#{bundle.ViewGuestsEditLink}"/></h4>
+                <h4><h:link outcome="/guests/Create" value="#{bundle.ViewGuestsCreateLink}" /></h4>
+                <br />
+                <h4><h:link outcome="/guests/List" value="#{bundle.ViewGuestsShowAllLink}"/></h4>
+                <br />
+                <h4><h:link outcome="/index" value="#{bundle.ViewGuestsIndexLink}"/></h4>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

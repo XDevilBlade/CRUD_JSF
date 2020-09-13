@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditRefApartmentTypesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                   <h:outputLabel value="#{bundle.EditRefApartmentTypesLabel_aptTypeCode}" for="aptTypeCode" />
+                   <h:inputText id="aptTypeCode" value="#{refApartmentTypesSession.current.aptTypeCode}" disabled="true" title="#{bundle.EditRefApartmentTypesTitle_aptTypeCode}" required="true" requiredMessage="#{bundle.EditRefApartmentTypesRequiredMessage_aptTypeCode}"/>
+                    
+                    <h:outputLabel value="#{bundle.EditRefApartmentTypesLabel_aptTypeDescription}" for="aptTypeDescription" />
+                    <h:inputText id="aptTypeDescription" value="#{refApartmentTypesSession.current.aptTypeDescription}" title="#{bundle.EditRefApartmentTypesTitle_aptTypeDescription}" />
+                </h:panelGrid>
+                <h:commandButton action="#{refApartmentTypesManagement.update(refApartmentTypesSession.current)}" value="#{bundle.EditRefApartmentTypesValiderLink}"/>
+                <br />
+                <h4><h:link outcome="/refApartmentTypes/List" value="#{bundle.EditRefApartmentTypesShowAllLink}"/></h4>
+                <br />
+                <h4><h:link outcome="/index" value="#{bundle.EditRefApartmentTypesIndexLink}" /></h4>
+            </h:form>
+            <br/>
+            <h3><h:outputText value = "#{bundle.RefApartmentTypesChampsObligatoires}"/></h3>
+        </ui:define>
+    </ui:composition>
+
+</html>

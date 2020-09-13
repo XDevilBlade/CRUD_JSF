@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateApartmentFacilitiesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateApartmentFacilitiesLabel_aptId}" for="aptId" />
+                    <h:selectOneMenu id="aptId" value="#{apartmentFacilitiesManagement.aptId}" title="#{bundle.CreateApartmentFacilitiesTitle_aptId}" required="true" requiredMessage="#{bundle.CreateApartmentFacilitiesRequiredMessage_aptId}">
+                        <f:selectItems value="#{apartmentsManagement.allApartments}"/>
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.CreateApartmentFacilitiesLabel_facilityCode}" for="facilityCode" />
+                    <h:selectOneMenu id="facilityCode" value="#{apartmentFacilitiesManagement.facilityCode}" title="#{bundle.CreateApartmentFacilitiesTitle_facilityCode}" required="true" requiredMessage="#{bundle.CreateApartmentFacilitiesRequiredMessage_facilityCode}">
+                        <f:selectItems value="#{refApartmentFacilitiesManagement.allRefApartmentFacilities}"/>
+                    </h:selectOneMenu>
+                
+                </h:panelGrid>
+                <br />
+                <h:commandButton action="#{apartmentFacilitiesManagement.create()}" value="#{bundle.CreateApartmentFacilitiesValiderLink}" />
+                <br />
+                <h4><h:link outcome="/apartmentFacilities/List" value="#{bundle.CreateApartmentFacilitiesShowAllLink}"/></h4>
+                <br />
+                <h4><h:link outcome="/index" value="#{bundle.CreateApartmentFacilitiesIndexLink}"/></h4>
+            </h:form>
+            <br/>
+            <h3><h:outputText value = "#{bundle.ApartmentFacilitiesEmptySelectOneMenuAptId}"/></h3>
+            <h3><h:outputText value = "#{bundle.ApartmentFacilitiesEmptySelectOneMenuFacilityCode}"/></h3>
+            <h3><h:outputText value = "#{bundle.ApartmentFacilitiesChampsObligatoires}"/></h3>
+        </ui:define>
+    </ui:composition>
+
+</html>

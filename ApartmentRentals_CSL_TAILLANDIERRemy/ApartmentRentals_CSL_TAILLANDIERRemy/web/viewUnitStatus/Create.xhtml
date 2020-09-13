@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateViewUnitStatusTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateViewUnitStatusLabel_statusDate}" for="statusDate" />
+                    <p:calendar id="statusDate" converter="dateToStringConverter" pattern="dd/MM/yyyy" value="#{viewUnitStatusManagement.viewUnitStatus.statusDate}" showOn="button" readonlyInput="true" title="#{bundle.CreateViewUnitStatusTitle_statusDate}" required="true" requiredMessage="#{bundle.CreateViewUnitStatusRequiredMessage_statusDate}"/>
+                    
+                    <h:outputLabel value="#{bundle.CreateViewUnitStatusLabel_availableYn}" for="availableYn" />
+                    <h:selectOneMenu id="availableYn" value="#{viewUnitStatusManagement.viewUnitStatus.availableYn}" title="#{bundle.CreateViewUnitStatusTitle_availableYn}" required="true" requiredMessage="#{bundle.CreateViewUnitStatusRequiredMessage_availableYn}">
+                        <f:selectItem itemLabel="Oui" itemValue="1"/>
+                        <f:selectItem itemLabel="Non" itemValue="0"/>
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.CreateViewUnitStatusLabel_aptId}" for="aptId" />
+                    <h:selectOneMenu id="aptId" value="#{viewUnitStatusManagement.viewUnitStatus.aptId}" converter="apartmentsConverter" title="#{bundle.CreateViewUnitStatusTitle_aptId}" required="true" requiredMessage="#{bundle.CreateViewUnitStatusRequiredMessage_aptId}">
+                        <f:selectItems value="#{apartmentsManagement.allApartments}"/>
+                    </h:selectOneMenu>
+                    
+                    <h:outputLabel value="#{bundle.CreateViewUnitStatusLabel_aptBookingId}" for="aptBookingId" />
+                    <h:selectOneMenu id="aptBookingId" value="#{viewUnitStatusManagement.viewUnitStatus.aptBookingId}" converter="apartmentBookingsConverter" title="#{bundle.CreateViewUnitStatusTitle_aptBookingId}" required="true" requiredMessage="#{bundle.CreateViewUnitStatusRequiredMessage_aptBookingId}">
+                        <f:selectItems value="#{apartmentBookingsManagement.allApartmentBookings}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandButton action="#{viewUnitStatusManagement.create()}" value="#{bundle.CreateViewUnitStatusValiderLink}" />
+                <br />
+                <h4><h:link outcome="/viewUnitStatus/List" value="#{bundle.CreateViewUnitStatusShowAllLink}"/></h4>
+                <br />
+                <h4><h:link outcome="/index" value="#{bundle.CreateViewUnitStatusIndexLink}"/></h4>
+            </h:form>
+            <br/>
+            <h3><h:outputText value = "#{bundle.ViewUnitStatusEmptySelectOneMenuAptId}"/></h3>
+            <h3><h:outputText value = "#{bundle.ViewUnitStatusEmptySelectOneMenuAptBookingId}"/></h3>
+            <h3><h:outputText value = "#{bundle.ViewUnitStatusChampsObligatoires}"/></h3>
+            <h3><h:outputText value = "#{bundle.ViewUnitStatusRemarqueDate}"/></h3>
+        </ui:define>
+    </ui:composition>
+
+</html>

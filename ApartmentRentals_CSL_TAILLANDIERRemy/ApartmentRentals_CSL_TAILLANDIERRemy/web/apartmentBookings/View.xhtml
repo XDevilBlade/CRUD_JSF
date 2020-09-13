@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewApartmentBookingsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewApartmentBookingsLabel_aptBookingId}"/>
+                    <h:outputText value="#{apartmentBookingsSession.current.aptBookingId}" title="#{bundle.ViewApartmentBookingsTitle_aptBookingId}"/>
+                    <h:outputText value="#{bundle.ViewApartmentBookingsLabel_bookingStartDate}"/>
+                    <h:outputText value="#{apartmentBookingsSession.current.bookingStartDate}" title="#{bundle.ViewApartmentBookingsTitle_bookingStartDate}"/>
+                    <h:outputText value="#{bundle.ViewApartmentBookingsLabel_bookingEndDate}"/>
+                    <h:outputText value="#{apartmentBookingsSession.current.bookingEndDate}" title="#{bundle.ViewApartmentBookingsTitle_bookingEndDate}"/>
+                    <h:outputText value="#{bundle.ViewApartmentBookingsLabel_otherBookingDetails}"/>
+                    <h:outputText value="#{apartmentBookingsSession.current.otherBookingDetails}" title="#{bundle.ViewApartmentBookingsTitle_otherBookingDetails}"/>
+                    <h:outputText value="#{bundle.ViewApartmentBookingsLabel_aptId}"/>
+                    <h:outputText value="#{apartmentBookingsSession.current.aptId}" title="#{bundle.ViewApartmentBookingsTitle_aptId}"/>
+                    <h:outputText value="#{bundle.ViewApartmentBookingsLabel_guestId}"/>
+                    <h:outputText value="#{apartmentBookingsSession.current.guestId}" title="#{bundle.ViewApartmentBookingsTitle_guestId}"/>
+                    <h:outputText value="#{bundle.ViewApartmentBookingsLabel_bookingStatusCode}"/>
+                    <h:outputText value="#{apartmentBookingsSession.current.bookingStatusCode}" title="#{bundle.ViewApartmentBookingsTitle_bookingStatusCode}"/>
+                </h:panelGrid>
+                <br />
+                <h4><h:commandLink action="#{apartmentBookingsManagement.remove(apartmentBookingsSession.current)}" value="#{bundle.ViewApartmentBookingsDeleteLink}"/></h4>
+                <h4><h:commandLink action="#{apartmentBookingsSession.edit(apartmentBookingsSession.current)}" value="#{bundle.ViewApartmentBookingsEditLink}"/></h4>
+                <h4><h:link outcome="/apartmentBookings/Create" value="#{bundle.ViewApartmentBookingsCreateLink}" /></h4>
+                <br />
+                <h4><h:link outcome="/apartmentBookings/List" value="#{bundle.ViewApartmentBookingsShowAllLink}"/></h4>
+                <br />
+                <h4><h:link outcome="/index" value="#{bundle.ViewApartmentBookingsIndexLink}"/></h4>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
