@@ -11,6 +11,7 @@ Obligation d'utiliser :
 ## Technos utilisées :
 * JSF
 * JavaBeans (Entity Beans / Session Beans)
+* JDBC
 * Hibernate
 * JPA
 * Langages de programmation utilisés : JAVA / XHTML
@@ -28,4 +29,7 @@ Obligation d'utiliser :
 
 ## Configuration du serveur GlassFish :
 * Accéder au panel d'administration du serveur
-* 
+* Création d'une ressource JDBC, pour la faire il faut :
+  - Créer dans un premier temps une "JDBC Connection Pools"
+  - Ensuite une "JDBC Resources"
+
