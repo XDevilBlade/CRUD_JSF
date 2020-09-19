@@ -28,8 +28,22 @@ Obligation d'utiliser :
 * Ouvrer votre navigateur web, taper dans la barre d'adresse URL "https://"
 
 ## Configuration du serveur GlassFish :
-* Accéder au panel d'administration du serveur
+* Accéder au panel d'administration du serveur :
+
+<img src="Images_GlassFish/JDBC.PNG" width="800">
+
 * Création d'une ressource JDBC, pour la faire il faut :
-  - Créer dans un premier temps une "JDBC Connection Pools"
-  - Ensuite une "JDBC Resources"
+  - Créer dans un premier temps une "JDBC Connection Pools" :
+  
+  <img src="Images_GlassFish/creationJDBCPool.PNG" width="800">
+  
+  <img src="Images_GlassFish/configurationJDBCPool_partie1.PNG" width="800">
+  
+  <img src="Images_GlassFish/configurationJDBCPool_partie2.PNG" width="800">
+  
+  <img src="Images_GlassFish/configurationJDBCPool_partie3.PNG" width="800">
+  
+  - Ensuite une "JDBC Resources" :
+  
+  <img src="Images_GlassFish/JDBCRessource.PNG" width="800">
 
