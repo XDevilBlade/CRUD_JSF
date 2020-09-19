@@ -43,7 +43,7 @@ Obligation d'utiliser :
   
   <img src="Images_GlassFish/configurationJDBCPool_partie3.PNG" width="800">
   
-  - Ensuite une "JDBC Resources" :
+  - Ensuite d'une "JDBC Resources" :
   
   <img src="Images_GlassFish/JDBCRessource.PNG" width="800">
 
