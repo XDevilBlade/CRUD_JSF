@@ -10,7 +10,7 @@ Obligation d'utiliser :
 
 ## Technos utilisées :
 * JSF
-* JavaBeans (Entity Beans / Session Beans)
+* EJB (Entity Beans / Session Beans)
 * JDBC
 * Hibernate
 * JPA
