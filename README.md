@@ -6,7 +6,7 @@ un schéma relationnel. Enfin, créer une application web, un CRUD (Create, Read
 
 Obligation d'utiliser :
 * un serveur GlassFish 
-* les technologies JavaBeans et JSF
+* les technologies EJB et JSF
 
 ## Technos utilisées :
 * JSF
