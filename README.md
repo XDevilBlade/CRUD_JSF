@@ -14,6 +14,8 @@ Obligation d'utiliser :
 * JDBC
 * Hibernate
 * JPA
+* Derby
+* Ant
 * Langages de programmation utilisés : JAVA / XHTML
 * IDE utilisé : NetBeans
 
